@@ -1,0 +1,12 @@
+/Users/dayne-game/Desktop/Assign1_q3/bin/Debug/netcoreapp3.0/Assign1_q3
+/Users/dayne-game/Desktop/Assign1_q3/bin/Debug/netcoreapp3.0/Assign1_q3.deps.json
+/Users/dayne-game/Desktop/Assign1_q3/bin/Debug/netcoreapp3.0/Assign1_q3.runtimeconfig.json
+/Users/dayne-game/Desktop/Assign1_q3/bin/Debug/netcoreapp3.0/Assign1_q3.runtimeconfig.dev.json
+/Users/dayne-game/Desktop/Assign1_q3/bin/Debug/netcoreapp3.0/Assign1_q3.dll
+/Users/dayne-game/Desktop/Assign1_q3/bin/Debug/netcoreapp3.0/Assign1_q3.pdb
+/Users/dayne-game/Desktop/Assign1_q3/obj/Debug/netcoreapp3.0/Assign1_q3.csprojAssemblyReference.cache
+/Users/dayne-game/Desktop/Assign1_q3/obj/Debug/netcoreapp3.0/Assign1_q3.csproj.CoreCompileInputs.cache
+/Users/dayne-game/Desktop/Assign1_q3/obj/Debug/netcoreapp3.0/Assign1_q3.AssemblyInfoInputs.cache
+/Users/dayne-game/Desktop/Assign1_q3/obj/Debug/netcoreapp3.0/Assign1_q3.AssemblyInfo.cs
+/Users/dayne-game/Desktop/Assign1_q3/obj/Debug/netcoreapp3.0/Assign1_q3.dll
+/Users/dayne-game/Desktop/Assign1_q3/obj/Debug/netcoreapp3.0/Assign1_q3.pdb
