@@ -40,18 +40,27 @@ namespace Assign1_q3.Models
             }
         }
 
+        public bool Check_Five_Char_Name(string name) {
+            if(name.Length == 5 || name.Length < 5 && name.Length > 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         public void Generate_New_Score_Database() {
             Score_And_Name_Database = new List<string>();
         }
 
-        public void Add_Five_Character_Name_And_True_Score_Into_Score_And_Name_Database() {
+        public void Add_Five_Character_Name_And_True_Score_And_Difficulty_Into_Score_And_Name_Database(string difficulty) {
             Generate_New_Score_Database();
             Score_And_Name_Database.Add(Five_Character_Name);
             Score_And_Name_Database.Add(True_Score_Value);
+            Score_And_Name_Database.Add(difficulty);
         }
 
-        public string Display_Five_Character_Name_And_True_Score_From_Score_And_Name_Database() {
-            Add_Five_Character_Name_And_True_Score_Into_Score_And_Name_Database();
+        public string Display_Five_Character_Name_And_True_Score_From_Score_And_Name_Database(string difficulty) {
+            Add_Five_Character_Name_And_True_Score_And_Difficulty_Into_Score_And_Name_Database(difficulty);
             string output = "";
             foreach(string name_or_score in Score_And_Name_Database) {
                 output += $"| {name_or_score} |";

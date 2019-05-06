@@ -7,79 +7,69 @@ namespace Assign1_q3
     {
         static void Main(string[] args)
         {
-            
-            /* PLEASE READ THE README.MD FILE BEFORE YOU USE THIS APPLICATION*/
+            string play_again_input = "";
+            bool keepgoing = true;
 
-            Messages messages = new Messages();
-            Console.WriteLine(messages.Welcome);
-            GameExtended game = new GameExtended();
-            //Game game = new Game();
-            //game.Load_Game_Settings();
+            do
+            {
+                Messages messages = new Messages();
+                Console.WriteLine(messages.Welcome);
+                GameExtended game = new GameExtended();
 
-            int inputed_select_case_number = 0;
-            bool check_if_inputed_select_case_number_is_valid = false;
-
-            do {
-                
                 Console.WriteLine(messages.Case_Select);
-                Console.Write(">> ");
-                int.TryParse(Console.ReadLine(), out inputed_select_case_number);
+                string input = Console.ReadLine();
 
-                if(inputed_select_case_number >= 1 && inputed_select_case_number <= 3) {
-                    check_if_inputed_select_case_number_is_valid = true;
-                    game.Change_Max_Number_In_Range_Difficulty(inputed_select_case_number);
-                    game.Load_Game_Settings();
-                } else {
-                    Console.WriteLine(messages.Case_Select_Incorrect);
+                do {
+                    Console.WriteLine(game.Change_Max_Number_In_Range_Difficulty(input));
+                }while(game.Check_Case_Input(input) == false);
+
+                game.Load_Game_Settings();
+
+                do {
+                    Console.Write(messages.Enter_Guess);
+                    int.TryParse(Console.ReadLine(), out int user_input);
+                    Console.WriteLine(game.Game_Commencing(user_input));
+                } while(game.Guess_Database.Count < 3 && !game.Chosen_Number_Guessed);
+
+                int rough_score = game.Guess_Database.Count;
+
+                if(!game.Chosen_Number_Guessed == true) {
+                    rough_score = 0;
                 }
 
-            } while(check_if_inputed_select_case_number_is_valid == false);
+                Scoring score = new Scoring();
 
-            Console.WriteLine(messages.Guess_Number);
+                bool check_name_character_length = false;
 
-            do {
+                do {
 
-                Console.Write(messages.Enter_Guess);
-                int.TryParse(Console.ReadLine(), out int user_input);
-                Console.WriteLine(game.Game_Commencing(user_input));
+                    Console.WriteLine(messages.Enter_Name);
+                    Console.Write(">> ");
+                    string user_input = Console.ReadLine();
 
-            } while(game.Guess_Database.Count < 3 && !game.Chosen_Number_Guessed);
+                    if(score.Check_Five_Char_Name(user_input)) {
+                        score.Five_Character_Name = user_input;
+                        check_name_character_length = true;
+                    } else {
+                        Console.WriteLine("Your Name is too long, or you didn't enter a name");
+                    }
 
-            int rough_score = game.Guess_Database.Count;
+                }while(check_name_character_length == false);
 
-            if(!game.Chosen_Number_Guessed == true) {
-                rough_score = 0;
-            }
+                score.Rough_Score_Value = rough_score;
+                score.Convert_Rough_Score_Into_True_Score();
+                Console.WriteLine(game.Display_All_Guesses_Individual_And_Num_Of_Guesses_Taken());
+                Console.WriteLine(score.Display_Five_Character_Name_And_True_Score_From_Score_And_Name_Database(game.difficulty_level));
 
-            bool check_name_character_length = false;
-            string five_character_name = "";
-
-            do {
-
-                Console.WriteLine(messages.Enter_Name);
-                Console.Write(">> ");
-                string user_input = Console.ReadLine();
-
-                if(user_input.Length == 5 || user_input.Length < 5 && user_input.Length > 1) {
-                    five_character_name = user_input;
-                    check_name_character_length = true;
-                } else if(user_input.Length == 0) {
-                    Console.Clear ();
-                    Console.WriteLine (messages.Enter_Name_Incorrect_one);
+                Console.WriteLine("Press Y if you would like to play again");
+                play_again_input = Console.ReadLine();
+                if(play_again_input == "y" || play_again_input == "Y") {
+                    keepgoing = true;
+                    Console.Clear();
                 } else {
-                    Console.Clear ();
-                    Console.WriteLine (messages.Enter_Name_Incorrect_two);
+                    keepgoing = false;
                 }
-
-            }while(check_name_character_length == false);
-
-            Scoring score = new Scoring();
-            score.Five_Character_Name = five_character_name;
-            score.Rough_Score_Value = rough_score;
-            score.Convert_Rough_Score_Into_True_Score();
-
-            Console.WriteLine(game.Display_All_Guesses_Individual_And_Num_Of_Guesses_Taken());
-            Console.WriteLine(score.Display_Five_Character_Name_And_True_Score_From_Score_And_Name_Database());
+            } while(keepgoing == true);
         }
     }
 }

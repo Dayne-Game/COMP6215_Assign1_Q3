@@ -41,7 +41,7 @@ namespace Assign1_q3.Models
             int Guess_Count = Guess_Database.Count;
             if(Check_The_Inputed_Guess_From_The_User(user_input)) {
                 return "Congradulations you won the Game!";
-            } else if (Guess_Count < 3) {
+            } else if (Guess_Count < 2) { // This is 2 so, on the last interation the else is returned 
                 return "Your Guess was Wrong. Try Again";
             } else {
                 return $"Sorry you didn't Guess the Correct Number. The correct number was: {Chosen_Number}";
